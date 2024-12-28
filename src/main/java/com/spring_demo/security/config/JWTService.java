@@ -21,7 +21,7 @@ import static io.jsonwebtoken.Jwts.*;
 @Service
 public class JWTService {
 
-    private static final String SECRET_KEY = "a3f57e5b4ef5b5c1b1cc2d4c9e4e4f0a5d6fb3a3324e9d1dbb7f5e1b7e1c2f8d";
+    private static final String SECRET_KEY = "";
 
     public String extractUsername
             (
