@@ -1,0 +1,62 @@
+[33mcommit 35fb659d1961f5301209be8f72445146d2a72047[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mcjalloh[m[33m)[m
+Author: c_jalloh <esjallow03@gmail.com>
+Date:   Tue Dec 31 20:13:34 2024 +0000
+
+    fixed the builder() bug by creating constructors for the classes that require it
+    now the problem is the authentication response
+    when the register request is called
+    a user is created in the database
+    but a jwt token is not returned instead a 403 status response is given
+    
+    fixed the builder() bug by creating constructors for the classes that require it
+    now the problem is the authentication response
+    when the register request is called
+    a user is created in the database
+    but a jwt token is not returned instead a 403 status response is given
+
+[33mcommit b17213d497de8205e0fa59ae16bebf47ec1fc759[m
+Author: c_jalloh <esjallow03@gmail.com>
+Date:   Tue Dec 31 20:09:41 2024 +0000
+
+    fixed the builder() bug by creating constructors for the classes that require it
+    now the problem is the authentication response
+    when the register request is called
+    a user is created in the database
+    but a jwt token is not returned instead a 403 status response is given
+
+[33mcommit b90977349e03dfe1f942d1501de621bcdf2e1efb[m[33m ([m[1;32mmaster[m[33m)[m
+Author: c_jalloh <esjallow03@gmail.com>
+Date:   Tue Dec 31 19:57:26 2024 +0000
+
+    fixed the builder() bug by creating constructors for the classes that require it
+    now the problem is the authentication response
+    when the register request is called
+    a user is created in the database
+    but a jwt token is not returned instead a 403 status response is given
+
+[33mcommit 971d936580c6e4cf02b5c403684b8bb910e0d1b3[m
+Author: c_jalloh <esjallow03@gmail.com>
+Date:   Tue Dec 31 19:55:59 2024 +0000
+
+    fixed the builder() bug by creating constructors for the classes that require it
+    now the problem is the authentication response
+    when the register request is called
+    a user is created in the database
+    but a jwt token is not returned instead a 403 status response is given
+
+[33mcommit dfd655dd899b2d58c6afc05cc78986eea064d3b9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/cjalloh[m[33m)[m
+Author: c_jalloh <esjallow03@gmail.com>
+Date:   Sat Dec 28 14:40:11 2024 +0000
+
+    removed the secret key
+
+[33mcommit 05a44c8258e58b8690d6fa7d92756b665b0c297c[m
+Author: c_jalloh <esjallow03@gmail.com>
+Date:   Sat Dec 28 13:55:12 2024 +0000
+
+    Just working on spring security
+    implemented jwt, oauth2.0 is next
+    having an error
+    java: cannot find symbol
+      symbol:   method builder()
+      location: class com.spring_demo.security.User.User

@@ -6,7 +6,7 @@ import com.spring_demo.security.User.User;
 import com.spring_demo.security.User.UserRepository;
 import com.spring_demo.security.config.JWTService;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Getter
 @RestController
 @RequestMapping("/api/v1/auth")
-@RequiredArgsConstructor
+
 public class AuthenticationController {
 
     private final UserRepository repository;
@@ -28,7 +28,18 @@ public class AuthenticationController {
     private final JWTService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    public  AuthenticationController (UserRepository repository,
+                                      PasswordEncoder passwordEncoder,
+                                      JWTService jwtService,
+                                      AuthenticationManager authenticationManager
+    )
+    {
 
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+        this.authenticationManager = authenticationManager;
+    }
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register
             (
@@ -50,20 +61,20 @@ return ResponseEntity.ok(registerService(request));
     }
 
     public AuthenticationResponse registerService(@NotNull RegisterRequest request) {
-        var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
-                .build();
+        var user = new User(
+                request.getFirstname(),
+                request.getLastname(),
+                request.getEmail(),
+                passwordEncoder.encode(request.getPassword()),
+                Role.USER
+        );
 
         repository.save(user);
 
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
+        return new AuthenticationResponse(
+                jwtToken
+               );
     }
 
     public AuthenticationResponse authenticateService(@NotNull AuthenticationRequest request) {
@@ -78,8 +89,8 @@ return ResponseEntity.ok(registerService(request));
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
+        return new AuthenticationResponse(
+                jwtToken
+        );
     }
 }

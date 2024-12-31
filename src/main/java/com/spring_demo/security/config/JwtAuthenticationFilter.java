@@ -17,10 +17,17 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-@RequiredArgsConstructor
+
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JWTService jwtService;
     private final UserDetailsService userDetailsService;
+
+    public  JwtAuthenticationFilter(JWTService jwtService, UserDetailsService userDetailsService){
+
+        this.jwtService = jwtService;
+        this.userDetailsService = userDetailsService;
+    }
+
 
     /**
      * Same contract as for {@code doFilter}, but guaranteed to be
